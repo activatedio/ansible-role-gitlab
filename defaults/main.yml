@@ -1,6 +1,4 @@
 ---
-# defaults file for ansible-activated-gitlab
-#
 gitlab_user: gitlab
 gitlab_base_path: /var/lib/gitlab
 gitlab_data_path: "{{ gitlab_base_path }}/data"
@@ -9,4 +7,3 @@ gitlab_config_path: "{{ gitlab_base_path }}/config"
 gitlab_external_url: http://localhost
 gitlab_docker_image: gitlab/gitlab-ce:11.2.0-ce.0
 gitlab_http_port: 8080
-
