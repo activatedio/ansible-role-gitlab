@@ -9,4 +9,4 @@
   roles:
     - geerlingguy.pip
     - geerlingguy.docker
-    - ansible-activated-gitlab
+    - ansible-role-gitlab
