@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  become: yes
+  vars:
+    pip_install_packages:
+      - name: docker
+    gitlab_external_url: https://mysite
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker
+    - ansible-activated-gitlab
