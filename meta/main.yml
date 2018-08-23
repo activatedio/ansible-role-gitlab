@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: gitlab
   author: btomasini
   description: Gitlab in docker container behind ssl proxy
   company: Activated, Inc.
