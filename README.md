@@ -1,14 +1,26 @@
-ansible
+ansible-role-gitlab
 =========
 
-A brief description of the role goes here.
+Install gitlab on Docker behind an SSL proxy.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should
-be mentioned here. For instance, if the role uses the EC2 module, it may be a
-good idea to mention in this section that the boto package is required.
+Requires `docker` and `docker-py`. This can be fulfilled through the following
+Ansible roles:
+
+``` yaml
+- name: Converge
+  hosts: all
+  become: yes
+  vars:
+    pip_install_packages:
+      - name: docker
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker
+
+```
 
 Role Variables
 --------------
@@ -22,12 +34,24 @@ be mentioned here as well.
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in
-regards to parameters that may need to be set for other roles, or variables that
-are used from other roles.
+None
 
 Example Playbook
 ----------------
+
+``` yaml
+---
+- name: Converge
+  hosts: all
+  become: yes
+  vars:
+    pip_install_packages:
+      - name: docker
+    gitlab_external_url: https://mysite
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker
+    - ansible-role-gitlab
 
 Including an example of how to use your role (for instance, with variables
 passed in as parameters) is always nice for users too:
@@ -35,14 +59,14 @@ passed in as parameters) is always nice for users too:
     - hosts: servers
       roles:
          - { role: ansible-activated-gitlab, x: 42 }
+```
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a
-website (HTML is not allowed).
+Ben Tomasini, Activated, Inc. - [btomasini@activated.io](mailto:btomasini@activated.io)
