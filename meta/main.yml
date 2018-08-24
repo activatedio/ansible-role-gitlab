@@ -4,7 +4,7 @@ galaxy_info:
   author: btomasini
   description: Gitlab in docker container behind ssl proxy
   company: Activated, Inc.
-  license: license (MIT)
+  license: MIT
   min_ansible_version: 2.4
   galaxy_tags: [ gitlab ]
   platforms:
