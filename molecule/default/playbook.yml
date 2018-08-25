@@ -6,6 +6,8 @@
     pip_install_packages:
       - name: docker
     gitlab_external_url: https://mysite
+    gitlab_http_enabled: true 
+    gitlab_https_enabled: false 
   roles:
     - geerlingguy.pip
     - geerlingguy.docker

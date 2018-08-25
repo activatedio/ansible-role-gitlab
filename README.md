@@ -1,13 +1,10 @@
-ansible-role-gitlab
-=========
+# gitlab
 
-Install gitlab on Docker behind an SSL proxy.
+Runs gitlab on Docker. Supports http and https.
 
-This role fulfills a narrow use case. Broader use will require more
-configuraiton vairables.
+## Requirements
 
-Requirements
-------------
+### Docker
 
 Requires `docker` and `docker-py`. This can be fulfilled through the following
 Ansible roles:
@@ -25,8 +22,18 @@ Ansible roles:
 
 ```
 
-Role Variables
---------------
+### SSL Certificates
+
+To use SSL, first copy your cert and key to the path on the host specified by
+the `gitlab_ssl_cert_path` and `gitlab_ssl_key_path` variables, which, by
+default, are: 
+
+| Name | Path |
+| --- | --- |
+| gitlab_ssl_cert_path | "/var/lib/gitlab/config/ssl/certs/gitlab.crt" |
+| gitlab_ssl_key_path | "/var/lib/gitlab/config/ssl/private/gitlab.key |
+
+## Role Variables
 
 | Name | Default | Description |
 | --- | --- | --- |
@@ -37,38 +44,64 @@ Role Variables
 | gitlab_config_path | {{ gitlab_base_path }}/config" | Location of configuration on the host |
 | gitlab_external_url | http://localhost | External URL |
 | gitlab_docker_image | gitlab/gitlab-ce:11.2.0-ce.0 | Gitlab image to run |
-| gitlab_http_port | 8080 | HTTP port exposed on host |
+| gitlab_http_enabled | false | If http is enabled |
+| gitlab_http_host_port | 8080 | HTTP port published on host |
+| gitlab_https_enabled | true | If https is enabled |
+| gitlab_https_host_port | 8443 | HTTPS port published on host |
+| gitlab_ssl_cert_path | "{{ gitlab_config_path }}/ssl/certs/gitlab.crt" | Path on host to SSL cert |
+| gitlab_ssl_key_path | "{{ gitlab_config_path }}/ssl/private/gitlab.key | Path on host to SSL key |
 
-Dependencies
-------------
+## Dependencies
 
 None
 
-Example Playbook
-----------------
+## Example Playbook
+
+HTTP only with HTTPS reverse-proxy:
 
 ``` yaml
 ---
 - name: Converge
   hosts: all
-  become: yes
+  become: true
   vars:
     pip_install_packages:
       - name: docker
     gitlab_external_url: https://mysite
+    gitlab_http_enabled: true 
+    gitlab_https_enabled: false 
   roles:
     - geerlingguy.pip
     - geerlingguy.docker
     - ansible-role-gitlab
-
 ```
 
-License
--------
+HTTPS only. Cert and keys must be copied first.
+
+``` yaml
+---
+- name: Converge
+  hosts: all
+  become: true
+  vars:
+    pip_install_packages:
+      - name: docker
+    gitlab_external_url: https://mysite
+  pre_tasks:
+    - name: Create gitlab user
+      user:
+        name: gitlab
+        state: present
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker
+    - ansible-role-gitlab
+```
+
+## License
 
 MIT
 
-Author Information
-------------------
+## Author Information
 
 Ben Tomasini, Activated, Inc. - [btomasini@activated.io](mailto:btomasini@activated.io)
