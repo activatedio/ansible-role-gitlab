@@ -5,6 +5,6 @@ nginx['listen_https'] = false
 nginx['listen_port'] = 80
 {% endif %}
 {% if gitlab_https_enabled %}
-nginx['ssl_certificate'] = "/etc/gitlab/ssl/certs/gitlab.crt"
-nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/private/gitlab.key"
+nginx['ssl_certificate'] = "/etc/ssl{{ gitlab_ssl_cert_path }}"
+nginx['ssl_certificate_key'] = "/etc/ssl{{ gitlab_ssl_key_path }}"
 {% endif %}

@@ -57,3 +57,4 @@
       - "{{ gitlab_config_path }}:/etc/gitlab"
       - "{{ gitlab_logs_path }}:/var/log/gitlab"
       - "{{ gitlab_data_path }}:/var/opt/gitlab"
+      - "{{ gitlab_ssl_path }}:/etc/ssl"

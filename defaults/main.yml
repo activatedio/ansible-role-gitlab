@@ -4,6 +4,7 @@ gitlab_base_path: /var/lib/gitlab
 gitlab_data_path: "{{ gitlab_base_path }}/data"
 gitlab_logs_path: "{{ gitlab_base_path }}/logs"
 gitlab_config_path: "{{ gitlab_base_path }}/config"
+gitlab_ssl_path: "/etc/ssl"
 gitlab_external_url: https://localhost
 gitlab_docker_image: gitlab/gitlab-ce:11.2.0-ce.0
 gitlab_http_enabled: false 
