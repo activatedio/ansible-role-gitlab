@@ -2,7 +2,7 @@
 galaxy_info:
   role_name: gitlab
   author: btomasini
-  description: Gitlab in docker container behind ssl proxy
+  description: Gitlab in Docker
   company: Activated, Inc.
   license: MIT
   min_ansible_version: 2.4
