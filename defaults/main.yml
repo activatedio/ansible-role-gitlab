@@ -11,5 +11,5 @@ gitlab_http_enabled: false
 gitlab_http_host_port: 8080
 gitlab_https_enabled: true
 gitlab_https_host_port: 8443
-gitlab_ssl_cert_path: "{{ gitlab_config_path }}/ssl/certs/gitlab.crt"
-gitlab_ssl_key_path: "{{ gitlab_config_path }}/ssl/private/gitlab.key"
+gitlab_ssl_cert_path: "/certs/gitlab.crt"
+gitlab_ssl_key_path: "/private/gitlab.key"
