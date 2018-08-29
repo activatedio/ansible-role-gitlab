@@ -38,6 +38,10 @@
   set_fact:
     gitlab_ports: "{{ gitlab_ports }} + [ '{{ gitlab_https_host_port }}:443' ]"
   when: gitlab_https_enabled
+- name: Append ssh port mapping
+  set_fact:
+    gitlab_ports: "{{ gitlab_ports }} + [ '{{ gitlab_ssh_host_port }}:22' ]"
+  when: gitlab_ssh_enabled
 - name: Run gitlab container
   docker_container:
     name: gitlab

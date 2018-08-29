@@ -43,6 +43,8 @@ the `gitlab_ssl_cert_path` and `gitlab_ssl_key_path`.
 | gitlab_http_host_port | 8080 | HTTP port published on host |
 | gitlab_https_enabled | true | If https is enabled |
 | gitlab_https_host_port | 8443 | HTTPS port published on host |
+| gitlab_ssh_enabled | false | If ssh is enabled |
+| gitlab_ssh_host_port | 2222 | SSH port published on host |
 | gitlab_ssl_cert_path | "/certs/gitlab.crt" | Relative path to cert |
 | gitlab_ssl_key_path | "/private/gitlab.key | Relative path to key |
 
