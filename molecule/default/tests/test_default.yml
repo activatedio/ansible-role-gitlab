@@ -28,6 +28,7 @@ file:
     mode: "0644"
     contains:
       - 'external_url "https://mysite"'
+      - "gitlab_rails['smtp_enable'] = false"
 http:
   http://localhost:8080:
     status: 302

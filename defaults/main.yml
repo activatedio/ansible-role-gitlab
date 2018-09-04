@@ -15,3 +15,4 @@ gitlab_ssh_enabled: false
 gitlab_ssh_host_port: 2222
 gitlab_ssl_cert_path: "/certs/gitlab.crt"
 gitlab_ssl_key_path: "/private/gitlab.key"
+gitlab_additional_config: {}
